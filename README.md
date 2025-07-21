@@ -4,6 +4,7 @@ Welcome to my LeetCode 150 repository! This project contains my Java-based solut
 
 My goal is to stay sharp with algorithms and data structures by consistently solving high-quality problems and maintaining clean, readable code.
 
+> 💡 You might find **interesting or unconventional approaches** here that are not readily available on the internet — I often explore alternative ways to solve classic problems.
 ---
 
 ## 📌 Study Plan Coverage
