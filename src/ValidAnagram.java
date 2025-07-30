@@ -7,16 +7,17 @@ public class ValidAnagram {
             System.out.println("false");
             return;
         }
-        char[] codes = new char[256];
+        int[] codes = new int[256];
         for (int i = 0; i < s.length(); i++) {
             codes[s.charAt(i)]++;
             codes[t.charAt(i)]--;
         }
         Arrays.sort(codes);
-        if(codes[codes.length-1]==0){
-            System.out.println("true");
+        int code = codes[codes.length - 1];
+        if(code ==0){
+            System.out.println("true  " +Character.toString(code));
         }else  {
-            System.out.println("false");
+            System.out.println("false  " +Character.toString(code));
         }
     }
 }
