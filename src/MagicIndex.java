@@ -6,9 +6,7 @@ public class MagicIndex {
 
     public static void main(String[] args) {
         List<Integer> magicIndex = new ArrayList<>();
-        for (int x=0; x<50; x++){
-            System.out.println(x+"=x="+x/2);
-        }
+
 
 
         int[] intArr  =  {-2,-1,2,2,2,2,5,7,8,9};

@@ -27,7 +27,7 @@ public class Combinations {
         }
         validComb.add(srcList.get(index));
         //
-        combinations(srcList,validCombination,validComb, target-1, index+1);
+         combinations(srcList,validCombination,validComb, target-1, index+1);
          validComb.remove(validComb.size()-1);
          //
         combinations(srcList,validCombination,validComb, target, index+1);

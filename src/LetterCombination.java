@@ -1,4 +1,7 @@
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 public class LetterCombination {
     public static void main(String[] args) {
@@ -11,22 +14,25 @@ public class LetterCombination {
         map.put('7', new Character[] { 'p', 'q', 'r','s'});
         map.put('8', new Character[] {  't', 'u' ,'v'});
         map.put('9', new Character[] { 'w', 'x','y' ,'z'});
-       System.out.println( addCombinations("123",0, new ArrayList<>(), map));
+        List<String> combinations = new ArrayList<>();
+        addCombinations("234",0, combinations, map);
+       System.out.println(combinations);
+
 
     }
-    static List<String> addCombinations(String pattern , int index  , List<String> comb , Map<Character, Character[]> map) {
+    static void addCombinations(String pattern , int index  , List<String> combinations , Map<Character, Character[]> map) {
         if(index > pattern.length()-1) {
-            return comb;
+            return ;
         }
         Character[] chars = map.get(pattern.charAt(index));
         if(chars == null) {
-           return addCombinations(pattern, index + 1, comb, map);
+            addCombinations(pattern, index + 1, combinations, map);
         }
         List<String> result = new ArrayList<>();
         for (int i = 0; i < chars.length; i++) {
-           if(comb.size() >0) {
-            for (int j = 0; j < comb.size(); j++) {
-                String s = comb.get(j) + Character.toString(chars[i]);
+           if(combinations.size() >0) {
+            for (int j = 0; j < combinations.size(); j++) {
+                String s = combinations.get(j) + Character.toString(chars[i]);
                 result.add(s);
             }
            }else {
@@ -34,6 +40,8 @@ public class LetterCombination {
 
            }
         }
-        return addCombinations(pattern, index + 1, result, map);
+          combinations.clear();
+          combinations.addAll(result);
+          addCombinations(pattern, index + 1, combinations, map);
     }
 }
