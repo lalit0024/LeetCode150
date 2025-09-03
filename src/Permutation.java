@@ -4,7 +4,7 @@ import java.util.List;
 public class Permutation {
 
     public static void main(String[] args) {
-        Integer[] srcList = {1,2,3,4};
+        Integer[] srcList = {1,2,3};
         List<List<Integer>> combinations = new ArrayList<>();
          permutations(srcList,combinations,0);
         System.out.println(combinations);

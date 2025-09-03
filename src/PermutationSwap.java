@@ -20,7 +20,6 @@ public class PermutationSwap {
             // Swapping
 
             swap(arr, idx, i);
-            System.out.println("Swap  :"+idx +"<<i>>"+i +" Array :"+Arrays.toString(arr));
 
             // Recursive call to create permutations
             // for the next element
@@ -28,7 +27,7 @@ public class PermutationSwap {
 
             // Backtracking
             swap(arr, idx, i);
-            System.out.println("Backtracking  :"+idx +"<<i>>"+i +" Array :"+Arrays.toString(arr));
+
         }
     }
 
