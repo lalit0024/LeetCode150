@@ -4,36 +4,30 @@ public class MajorityElement {
 
     public static void main(String[] args) {
 
-        int[] inrarr = {3,2,3,8,8,8,7,7,7,7,7,9,5,5,5,9,9,9,9,9,9,9};
-
-       System.out.println(majorityElement(inrarr));
-       Arrays.sort(inrarr);
+        int[] nums = {3,2,3,8,8,8,7,7,7,7,7,9,5,5,5,9,9,9,9,9,9,9,8,8,8,8,8,8,8,8,8,8,8};
+        int[] nums2 = {2,2,1,1,1,2,2};
+      System.out.println(majorityElement(nums2));
+       Arrays.sort(nums);
         int currentDupeValCounter = 0;
-        int preDupeValCounter = 0;
+        int preDupeValCounter = 1;
         int majDupEl =0;
-        for (int x=1; x<inrarr.length; x++){
-            System.out.println("comparing" + inrarr[x] + " and " + inrarr[x-1]);
-            if (inrarr[x]!=inrarr[x-1]) {
-                if(preDupeValCounter < currentDupeValCounter){
-                    majDupEl = inrarr[x-1] ;
-                    preDupeValCounter = currentDupeValCounter;
-                }
+        if(nums.length==1){
+            return;
+        }
+        for (int x=1; x<nums.length; x++){
+            if (nums[x]!=nums[x-1] && preDupeValCounter < currentDupeValCounter) {
+                preDupeValCounter = currentDupeValCounter;
                 currentDupeValCounter =0 ;
+                majDupEl = nums[x-1] ;
             }
             else {
-
                 currentDupeValCounter++;
-
-                if(x==inrarr.length-1){
-                    if(preDupeValCounter < currentDupeValCounter){
-                        majDupEl = inrarr[x-1] ;
-                    }
-                }
               //  majDupEl = inrarr[x] ;
-
+            }
+            if(x==nums.length-1 && preDupeValCounter< currentDupeValCounter){
+                 majDupEl = nums[x-1] ;
 
             }
-
         }
 
         System.out.println(majDupEl);

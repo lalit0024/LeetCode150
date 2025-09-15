@@ -11,15 +11,17 @@ public class CircularArray {
     }
 
     public void add(Integer value) {
-        array[head] = value;
-       head = head + 1% array.length;
+        array[head% array.length] = value;
+        head++;
 
     }
 
     public Integer remove () {
-        Integer result = array[head];
-        array[head] = null;
-       return array[head];
+
+        Integer result = array[head%array.length];
+        head--;
+
+       return result;
     }
 
     @Override
@@ -28,7 +30,7 @@ public class CircularArray {
     }
 
     public static void main(String[] args) {
-        CircularArray circularArray = new CircularArray(3);
+        CircularArray circularArray = new CircularArray(5);
         circularArray.add(1);
         circularArray.add(2);
         circularArray.add(3);
@@ -41,5 +43,11 @@ public class CircularArray {
         System.out.println(circularArray);
         circularArray.add(6);
         System.out.println(circularArray);
+        circularArray.add(6);
+        circularArray.add(6);
+        System.out.println(circularArray);
+
+
+
     }
 }
