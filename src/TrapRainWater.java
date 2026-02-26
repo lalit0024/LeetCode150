@@ -6,10 +6,10 @@ public class TrapRainWater {
 
       // int[] height = {4,2,0,3,2,5} ;
       //  int[] height = {0,0,4,0,0,6,0,0,3,0,5,0,1,0,0,0} ;
-        int [] height = {3,9,2,2,8,8,7,3};
-       System.out.println(trapRainWater(height));
-       System.out.println(rainWater(height));
-       System.out.println(maxWaterB(height));
+        int [] height = {0,1,0,2,1,0,1,3,2,1,2,1};
+       System.out.println(bruteForce(height));
+       System.out.println(subArray(height));
+
        // System.out.println( maxWaterB(height));
     }
 
@@ -177,5 +177,59 @@ public class TrapRainWater {
         }
 
         return res;
+    }
+
+
+
+
+    static int bruteForce(int[] height) {
+        int res = 0;
+        int[] lefMax = new int[height.length];
+        int[] righMax = new int[height.length];
+        //Left Max
+        lefMax[0] = height[0];
+        righMax[height.length - 1] = height[height.length - 1];
+
+        for(int j = height.length-2; j >=0; j--) {
+            righMax[j] = Math.max(height[j], righMax[j+1]);
+        }
+
+        for(int j = 1; j < height.length; j++) {
+            lefMax[j] = Math.max(lefMax[j-1], height[j]);
+        }
+
+        for (int i = 1; i < height.length - 1; i++) {
+            res += Math.min(lefMax[i], righMax[i]) - height[i];
+        }
+
+        return res;
+    }
+
+    static int subArray(int[] height) {
+        // 4,1,2,5,2,3,2,6
+        int res = 0;
+        //left max so far ..
+        int left = 1;
+        // right max so far ..
+        int right = height.length-2;
+        int lefMax = height[0];
+        int rightMax = height[height.length-1];
+        while (left <= right) {
+           if(lefMax<rightMax){
+               res+=  Math.max(0,lefMax- height[left]);
+               lefMax= Math.max(lefMax, height[left]);
+               left++;
+
+           }else{
+               res+=  Math.max(0,rightMax- height[right]);
+               rightMax = Math.max(rightMax, height[right]);
+               right--;
+           }
+
+
+        }
+
+
+        return  res;
     }
 }

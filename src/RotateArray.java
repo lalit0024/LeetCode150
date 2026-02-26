@@ -42,16 +42,10 @@ public class RotateArray {
 
         // Temporary array to store rotated elements
         int[] res = new int[n];
-
+      int offSet = n-k ;
         for (int i = 0; i < n; i++) {
-            if (i < k) {
-                // Place last k elements at the beginning
-                res[i] = nums[n + i - k];
-            }
-            else {
-                // Shift the rest
-                res[i] = nums[i - k];
-            }
+
+            res[i] = nums[(i+offSet)% n] ;
         }
 
         // Copy back to original array (in-place update)

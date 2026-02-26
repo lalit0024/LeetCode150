@@ -54,15 +54,15 @@ public class SubSeq {
             return false;
         }
 
-        int index = 0;
-        int searchCounter = 0;
-        while(index < s.length() && searchCounter < t.length()) {
-            if (s.charAt(index) == t.charAt(searchCounter)) {
-                index++;
+        int sIndex = 0;
+        int tIndex = 0;
+        while(sIndex < s.length() && tIndex < t.length()) {
+            if (s.charAt(sIndex) == t.charAt(tIndex)) {
+                sIndex++;
             }
-            searchCounter++;
+            tIndex++;
         }
-        if(index==s.length()) {
+        if(sIndex==s.length()) {
             return true;
         }
         return false;
