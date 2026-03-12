@@ -23,7 +23,7 @@ public class StreamsApi {
     public static void demonstrateFilter() {
         System.out.println("1. FILTER - Filter elements based on condition:");
         List<Integer> numbers = Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
-
+        
         // Filter even numbers
         List<Integer> evenNumbers = numbers.stream()
                 .filter(n -> n % 2 == 0)

@@ -4,6 +4,7 @@ public class RotateArray {
 
     public static void main(String[] args) {
         int[] nums = {1,2,3,4,5};
+        int copy[] = new int[nums.length];
 //        int k= 2 ;
 //        int start = nums.length-1 ;
 //        int[] helper = new int[k];

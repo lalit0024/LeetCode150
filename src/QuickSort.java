@@ -1,5 +1,9 @@
+import java.util.Arrays;
+
 class QuickSort {
 
+   
+   
     // partition function
     static int partition(int[] arr, int low, int high) {
         
@@ -26,6 +30,7 @@ class QuickSort {
         return i + 1;
     }
 
+
     // swap function
     static void swap(int[] arr, int i, int j) {
         int temp = arr[i];
@@ -49,12 +54,80 @@ class QuickSort {
 
     public static void main(String[] args) {
         int[] arr = {10, 7, 8, 9, 1, 5};
+        System.out.println("Original array: " + Arrays.toString(arr));
+       // naiveParition(arr);
+       lomutoPartion(arr);
         int n = arr.length;
       
-        quickSort(arr, 0, n - 1);
+      //  quickSort(arr, 0, n - 1);
         
-        for (int val : arr) {
-            System.out.print(val + " ");  
-        }
+       // System.out.println("Sorted array: " + Arrays.toString(arr));
     }
-}
+
+
+     static  void naiveParition( int[] arr){
+        int length = arr.length;
+        int pivot = arr[length - 1];
+
+        int[] temp = new int[length];
+        int index = 0;
+        int pivotIndex = length - 1;
+        for (int i = 0; i < length ; i++) {
+            if (arr[i] < pivot) {
+               
+                temp[index++] = arr[i]; 
+
+            }
+        }
+
+         for (int i = 0; i < length ; i++) {
+            if (arr[i] == pivot) {
+                pivotIndex = index;
+                temp[index++] = arr[i]; 
+
+            }
+        }
+
+        for (int i = 0; i < length ; i++) {
+            if (arr[i] > pivot) {
+                temp[index++] = arr[i]; 
+            }
+        }
+
+        for (int i = 0; i < length; i++) {
+            arr[i] = temp[i];
+        }   
+
+        System.out.println("After Naive Partitioning:"+ Arrays.toString(arr)  + " Pivot Index: "+ pivotIndex);
+
+     }
+
+
+     static void lomutoPartion(int[] arr){
+          // int[] arr = {10, 7, 8, 9, 1, 5};
+          int length = arr.length;
+          int pivot = arr[length - 1];
+
+          int trackPivot=0;
+         
+          for(int i=0; i<length-1; i++){
+              if(arr[i] > pivot){
+                 // swap(arr, trackLess, i);
+                int temp = arr[i];
+                arr[i]= pivot;
+                arr[length-1] = temp;
+                trackPivot = i;
+                continue;
+                  //swap(arr, trackGreater, i);
+              
+              }else if(trackPivot != 0 && arr[i] < pivot){
+                 int temp = arr[i];
+                 arr[i]= arr[trackPivot];
+                 arr[trackPivot] = temp;
+                 trackPivot = i ;
+
+              }
+          }
+            System.out.println("After Lomuto Partitioning:"+ Arrays.toString(arr)  + " Pivot Index: "+ trackPivot);
+     }
+    }
